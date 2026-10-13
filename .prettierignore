@@ -1,0 +1,12 @@
+node_modules
+dist
+.npm-cache
+artifacts
+src/assets
+package-lock.json
+docs/design-reference
+coverage
+playwright-report
+test-results
+.vercel
+.netlify
