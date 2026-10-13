@@ -28,4 +28,4 @@ npm run preview
 
 Deploy the generated `dist` folder to a static host. No environment variables are required.
 
-Responsive layouts and interactions were checked in Microsoft Edge at widths from 320 to 1920 pixels. See [verification notes](docs/FINAL_CHECKS.md).
+Responsive layouts and interactions were checked in Microsoft Edge at widths from 320 to 1920 pixels.
