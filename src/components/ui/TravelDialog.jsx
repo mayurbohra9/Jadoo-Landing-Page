@@ -4,8 +4,14 @@ import Icon from './Icon';
 
 export default function TravelDialog({ mode, trip, onClose }) {
   const dialog = useRef(null);
-  const title = trip ? trip.name : mode === 'hotels' ? 'Find a hotel' : 'Find a flight';
-
+  const demo = mode === 'demo';
+  const title = demo
+    ? 'Travel with Jadoo'
+    : trip
+      ? trip.name
+      : mode === 'hotels'
+        ? 'Find a hotel'
+        : 'Find a flight';
   useEffect(() => {
     const element = dialog.current;
     const previousOverflow = document.body.style.overflow;
@@ -17,7 +23,6 @@ export default function TravelDialog({ mode, trip, onClose }) {
       document.body.style.overflow = previousOverflow;
     };
   }, []);
-
   function keepFocusInside(event) {
     if (event.key !== 'Tab') return;
     const controls = [...dialog.current.querySelectorAll('button, select, a[href]')];
@@ -31,7 +36,6 @@ export default function TravelDialog({ mode, trip, onClose }) {
       first.focus();
     }
   }
-
   return (
     <dialog
       ref={dialog}
@@ -69,7 +73,16 @@ export default function TravelDialog({ mode, trip, onClose }) {
         <h2 id="travel-title" className="pr-5 font-display text-3xl font-bold">
           {title}
         </h2>
-        {trip ? (
+        {demo ? (
+          <div
+            className="my-6 flex aspect-video items-center justify-center rounded-2xl bg-[#fff1da] text-coral"
+            aria-hidden="true"
+          >
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-coral text-2xl text-white shadow-play">
+              &#9654;
+            </span>
+          </div>
+        ) : trip ? (
           <dl className="my-6 grid grid-cols-2 gap-4 text-sm">
             <dt className="text-muted">Location</dt>
             <dd>{trip.name}</dd>
@@ -89,17 +102,25 @@ export default function TravelDialog({ mode, trip, onClose }) {
           </label>
         )}
         <p className="mb-6 text-sm leading-6 text-muted">
-          {trip
-            ? 'This is a sample itinerary and price. Online booking is not connected. Explore how booking works below.'
-            : `This demo does not search live ${mode === 'hotels' ? 'hotel' : 'flight'} availability or prices. Explore our featured destinations for travel inspiration.`}
+          {demo
+            ? 'Our travel demo video is coming soon. Explore our destinations while you wait.'
+            : trip
+              ? 'This is a sample itinerary and price. Online booking is not connected. Explore how booking works below.'
+              : `This demo does not search live ${mode === 'hotels' ? 'hotel' : 'flight'} availability or prices. Explore our featured destinations for travel inspiration.`}
         </p>
-        <a
-          className="primary-button block text-center"
-          href={trip ? '#booking' : '#destinations'}
-          onClick={() => onClose(true)}
-        >
-          {trip ? 'See booking steps' : 'Explore destinations'}
-        </a>
+        {demo ? (
+          <button type="button" className="primary-button w-full" onClick={onClose}>
+            Close
+          </button>
+        ) : (
+          <a
+            className="primary-button block text-center"
+            href={trip ? '#booking' : '#destinations'}
+            onClick={() => onClose(true)}
+          >
+            {trip ? 'See booking steps' : 'Explore destinations'}
+          </a>
+        )}
       </div>
     </dialog>
   );

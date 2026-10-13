@@ -1,6 +1,14 @@
+import { useRef, useState } from 'react';
+import TravelDialog from '../components/ui/TravelDialog';
 import { asset } from '../data/content';
 
 export default function Hero() {
+  const [demoOpen, setDemoOpen] = useState(false);
+  const demoTrigger = useRef(null);
+  function closeDemo() {
+    setDemoOpen(false);
+    requestAnimationFrame(() => demoTrigger.current?.focus());
+  }
   return (
     <section
       id="home"
@@ -34,9 +42,11 @@ export default function Hero() {
           <a className="primary-button" href="#destinations">
             Find out more
           </a>
-          <span
-            aria-disabled="true"
-            title="Demo video is unavailable"
+          <button
+            ref={demoTrigger}
+            type="button"
+            onClick={() => setDemoOpen(true)}
+            aria-haspopup="dialog"
             className="flex items-center gap-5 text-muted"
           >
             <span
@@ -46,7 +56,7 @@ export default function Hero() {
               ▶
             </span>
             <span>Play Demo</span>
-          </span>
+          </button>
         </div>
       </div>
       <img
@@ -57,6 +67,7 @@ export default function Hero() {
         height="764"
         fetchPriority="high"
       />
+      {demoOpen && <TravelDialog mode="demo" onClose={closeDemo} />}
     </section>
   );
 }
