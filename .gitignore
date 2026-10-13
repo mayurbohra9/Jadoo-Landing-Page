@@ -6,7 +6,7 @@ dist/
 *.local
 .npm-cache/
 artifacts/
-docs/design-reference/
+docs
 .vite/
 coverage/
 playwright-report/
