@@ -65,14 +65,14 @@ export default function Testimonials() {
             <p className="mt-1 text-sm">{testimonials[active].location}</p>
           </figcaption>
         </figure>
-        <div className="absolute right-0 top-16 flex flex-col gap-4 xl:-right-10">
+        <div className="testimonial-controls absolute right-0 top-16 flex flex-col gap-4 xl:-right-10">
           <button
             className="rounded-full p-1.5 text-muted"
             type="button"
             aria-label="Previous testimonial"
             onClick={() => change(-1)}
           >
-            <Icon name="arrow" className="h-5 w-5 rotate-180" />
+            <Icon name="arrow" className="h-5 w-5" />
           </button>
           <button
             className="rounded-full p-1.5 text-ink"

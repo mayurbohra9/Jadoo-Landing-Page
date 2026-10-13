@@ -29,9 +29,13 @@ export default function Footer() {
                       {label}
                     </a>
                   ) : (
-                    <span aria-disabled="true" title={`${label} is unavailable`}>
+                    <button
+                      type="button"
+                      className="nav-link text-left"
+                      title={`${label} is unavailable`}
+                    >
                       {label}
-                    </span>
+                    </button>
                   )}
                 </li>
               ))}
@@ -45,10 +49,10 @@ export default function Footer() {
               ['Instagram', 'instagram.svg'],
               ['Twitter', 'twitter.svg'],
             ].map(([name, icon]) => (
-              <span
+              <button
+                type="button"
                 key={name}
                 aria-label={name}
-                role="img"
                 title={`${name} profile is unavailable`}
                 className={`social-link ${name === 'Instagram' ? 'instagram-link' : ''}`}
               >
@@ -57,12 +61,12 @@ export default function Footer() {
                   alt=""
                   className={name === 'Instagram' ? 'instagram-asset' : 'h-4 w-4 object-contain'}
                 />
-              </span>
+              </button>
             ))}
           </div>
           <p className="mb-4 mt-5 text-lg text-muted">Discover our app</p>
           <div className="flex gap-2">
-            <span title="Google Play listing is unavailable">
+            <button type="button" className="app-badge" title="Google Play listing is unavailable">
               <img
                 src={asset('logos', 'google-play.png')}
                 alt="Get it on Google Play"
@@ -70,8 +74,8 @@ export default function Footer() {
                 height="35"
                 loading="lazy"
               />
-            </span>
-            <span title="App Store listing is unavailable">
+            </button>
+            <button type="button" className="app-badge" title="App Store listing is unavailable">
               <img
                 src={asset('logos', 'app-store.png')}
                 alt="Available on the App Store"
@@ -79,7 +83,7 @@ export default function Footer() {
                 height="35"
                 loading="lazy"
               />
-            </span>
+            </button>
           </div>
         </div>
       </div>

@@ -55,11 +55,11 @@
     cursor: pointer;
   }
   :focus-visible {
-    outline: 3px solid #6246e5;
+    outline: 3px solid var(--color-coral);
     outline-offset: 5px;
   }
   .newsletter label:focus-within {
-    outline: 3px solid #6246e5;
+    outline: 3px solid var(--color-coral);
     outline-offset: 3px;
   }
   ::selection {
@@ -85,7 +85,10 @@
     @apply transition-colors hover:text-coral;
   }
   .social-link {
-    @apply flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md;
+    @apply flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition-transform hover:-translate-y-1;
+  }
+  .app-badge {
+    @apply rounded-md transition-transform hover:-translate-y-1;
   }
 }
 
@@ -173,7 +176,7 @@
   font-weight: 400;
 }
 .account-input:focus-visible {
-  outline: 2px solid #6246e5;
+  outline: 2px solid var(--color-coral);
   outline-offset: 2px;
 }
 .site-header .nav-link {
@@ -487,6 +490,58 @@
     opacity: 0.65;
   }
 }
+.testimonial-controls button:first-child svg {
+  rotate: 180deg;
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ongoing-trip {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    width: min(245px, 100%);
+  }
+}
+@media (max-width: 1023px) {
+  .booking-visual {
+    padding-right: 0;
+  }
+  .testimonial-stack {
+    padding-right: 0;
+    margin-bottom: 76px;
+  }
+  .testimonial-controls {
+    top: calc(100% + 16px);
+    right: 0;
+    left: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+  .testimonial-controls button {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+  .testimonial-controls button:first-child svg {
+    rotate: 90deg;
+  }
+  .testimonial-controls button:last-child svg {
+    rotate: -90deg;
+  }
+  .ongoing-trip {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    width: min(245px, 100%);
+  }
+}
 @media (max-width: 639px) {
   .site-header .header-inner::before {
     border-radius: 10px;
@@ -509,9 +564,12 @@
     height: 70px;
   }
   .ongoing-trip {
-    right: -4px;
-    bottom: 104px;
-    width: 205px;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+    margin-left: auto;
+    width: min(245px, 100%);
     padding: 12px;
   }
   .newsletter {

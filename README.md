@@ -17,7 +17,7 @@ npm run dev
 - Hotel and flight preview dialogs, destination details, and account dialogs.
 - Interactive testimonials, demo popup, trip-save toggle, and newsletter preview.
 
-This is a frontend demonstration. Live search, booking, authentication, and email delivery are not connected. English is the only available language. Controls without supplied content or real URLs remain inactive.
+This is a frontend demonstration. Live search, booking, authentication, and email delivery are not connected. English is the only available language. Footer controls without real URLs show hover feedback but do not navigate.
 
 ## Build and deploy
 
